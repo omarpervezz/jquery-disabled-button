@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery back button disabled</title>
+    <style>
+      .newclass {
+        width: 300px;
+        height: 200px;
+        background-color: rgb(34, 84, 124);
+        margin: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="jquery_disabled"></div>
+   
+   <!-- Jquery cdn -->
+   
+    <script>
+      const jquery_disabled = document.querySelector("#jquery_disabled");
+     window.onload = function () {
+        if (typeof window.history.pushState === "function") {
+          console.log('heheh')
+          history.pushState("jibberish", null, null);
+          window.onpopstate = function () {
+            history.pushState("newjibberish", null, null);
+            jquery_disabled.classList.add("newclass");
+          };
+        } else {
+          var ignoreHashChange = true;
+          window.onhashchange = function () {
+            if (!ignoreHashChange) {
+              ignoreHashChange = true;
+              window.location.hash = Math.random();
+            } else {
+              ignoreHashChange = false;
+            }
+          };
+        }
+      };
+    </script>
+  </body>
+</html>
