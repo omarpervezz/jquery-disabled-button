@@ -1,48 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jquery back button disabled</title>
-    <style>
-      .newclass {
-        width: 300px;
-        height: 200px;
-        background-color: rgb(34, 84, 124);
-        margin: auto;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: grey;
+      margin: auto;
+    }
+    .newClass{
+      background-color: rgb(44, 44, 36);
+    }
+  </style>
+</head>
+<body>
 
-  <body>
-
-    <div id="jquery_disabled"></div>
-   
-   <!-- Jquery cdn -->
-   
-   <script>
-    const jquery_disabled = document.querySelector("#jquery_disabled");
-   window.onload = function () {
-      if (typeof window.history.pushState === "function") {
-        console.log('heheh')
-        history.pushState("jibberish", null, null);
-        window.onpopstate = function () {
-          history.pushState("newjibberish", null, null);
-          jquery_disabled.classList.add("newclass");
+  <div class="box">When a you press the click the back button then I class will add and change our background color</div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script>
+    const div = document.querySelector('div')
+    $(document).ready(function() {
+        window.history.pushState(null, "", window.location.href);        
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+            div.classList.add('newClass');
         };
-      } else {
-        var ignoreHashChange = true;
-        window.onhashchange = function () {
-          if (!ignoreHashChange) {
-            ignoreHashChange = true;
-            window.location.hash = Math.random();
-          } else {
-            ignoreHashChange = false;
-          }
-        };
-      }
-    };
+    });
   </script>
-  </body>
+</body>
 </html>

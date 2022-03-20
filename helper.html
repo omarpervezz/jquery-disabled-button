@@ -21,28 +21,28 @@
    
    <!-- Jquery cdn -->
    
-    <script>
-      const jquery_disabled = document.querySelector("#jquery_disabled");
-     window.onload = function () {
-        if (typeof window.history.pushState === "function") {
-          console.log('heheh')
-          history.pushState("jibberish", null, null);
-          window.onpopstate = function () {
-            history.pushState("newjibberish", null, null);
-            jquery_disabled.classList.add("newclass");
-          };
-        } else {
-          var ignoreHashChange = true;
-          window.onhashchange = function () {
-            if (!ignoreHashChange) {
-              ignoreHashChange = true;
-              window.location.hash = Math.random();
-            } else {
-              ignoreHashChange = false;
-            }
-          };
-        }
-      };
-    </script>
+   <script>
+    const jquery_disabled = document.querySelector("#jquery_disabled");
+   window.onload = function () {
+      if (typeof window.history.pushState === "function") {
+        console.log('heheh')
+        history.pushState("jibberish", null, null);
+        window.onpopstate = function () {
+          history.pushState("newjibberish", null, null);
+          jquery_disabled.classList.add("newclass");
+        };
+      } else {
+        var ignoreHashChange = true;
+        window.onhashchange = function () {
+          if (!ignoreHashChange) {
+            ignoreHashChange = true;
+            window.location.hash = Math.random();
+          } else {
+            ignoreHashChange = false;
+          }
+        };
+      }
+    };
+  </script>
   </body>
 </html>
